@@ -1,1 +1,3 @@
 # blackjack
+
+## pedir carta
