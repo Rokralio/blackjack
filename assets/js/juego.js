@@ -2,6 +2,14 @@ let deck =[]
 const tipos = ['C','D','H','S']
 const especiales = ['A','J','Q','K']
 
+let puntosJugador = 0,
+    puntosComputadora = 0
+
+//referencias
+const btnPedir = document.querySelector('#btnPedir')
+
+let puntosHTML = document.querySelectorAll('small')
+
 const crearDeck = ()=>{
   //esta function crea una nueva baraja
   for (let i = 2; i < 10; i++) {
@@ -18,8 +26,6 @@ const crearDeck = ()=>{
 
   deck = _.shuffle(deck);
 
-  console.log(deck)
-
   return deck
 }
 
@@ -34,11 +40,25 @@ const pedirCarta = ()=>{
   }
 
   let carta = deck.pop();
-  console.log(deck)
-  console.log(carta)
+
   return carta
 }
 
-for (let i = 0; i <= 52; i++) {
-  pedirCarta();
+
+// pedirCarta();
+
+const valorCarta = (carta)=>{
+
+  const valor = carta.substring(0, carta.length -1)
+  return (isNaN(valor))?
+          (valor === 'A') ? 11 : 10
+          : valor * 1;
 }
+
+//Eventos
+btnPedir.addEventListener('click', ()=>{
+  const carta = pedirCarta()
+  puntosJugador = puntosJugador + valorCarta(carta)
+  puntosHTML[0].innerText = puntosJugador
+})
+
