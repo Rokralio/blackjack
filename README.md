@@ -9,3 +9,5 @@
 ### Turno de la computadora
 
 ### Nuevo Juego mensaje de victoria
+
+### Agregrando seguridad con patron modulo
